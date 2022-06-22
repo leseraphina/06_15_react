@@ -15,7 +15,7 @@ function App(){
   let [appintList,setAppintList] = useState([])
   // search에서 받아올 값
   let [query,setQuery] = useState('')
-  let [sortBy,setSortBy] =useState('ownerName')
+  let [sortBy,setSortBy] =useState('petName')
   let [orderBy,setOrderBy] = useState('asc')
 
 const filterAppointents = appintList.filter(
@@ -27,14 +27,14 @@ const filterAppointents = appintList.filter(
     )
   }
 )
-// .sort(
-//   (a,b) => {
-//     let order = (orderBy == 'asc' ? 1 : -1)
-//     return (
-//       a[]<b[] ? -1*order : 1* order
-//     )
-//   }
-// )
+.sort(
+  (a,b) => {
+    let order = (orderBy == 'asc' ? 1 : -1)
+    return (
+      a[sortBy].toLowerCase()<b[sortBy].toLowerCase()? -1 * order : 1 * order
+    )
+  }
+)
 
   // 설정하기: callback
   const fetchData = useCallback(
@@ -51,10 +51,22 @@ const filterAppointents = appintList.filter(
   return (
     <article>
       <h3><BiArchive style={{color:'#d47776'}} />welcome</h3>
-      <AddApointment />
+      <AddApointment
+        onSendAppointment={
+          myAppintment => setAppintList([...appintList,myAppintment])
+        }
+        lastId={
+          appintList.reduce((max,item) => Number(item.id) > max ? Number(item.id) : max ,0)
+        } 
+      />
       <Seach 
         query={query}
-        onQueryChange = {myQuery => setQuery(myQuery)}/>
+        onQueryChange = {myQuery => setQuery(myQuery)}
+        orderBy = {orderBy}
+        onOrderByChange = {myOrder => setOrderBy(myOrder)}
+        sortBy = { sortBy}
+        onSortByChange = { mySort => setSortBy(mySort)}
+        />
       <div id="list">
       <ul>
            {filterAppointents.map(appointment => (
