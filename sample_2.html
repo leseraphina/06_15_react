@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reduce()</title>
+</head>
+<body>
+  <script>
+
+    let num = [1,2,3,4,5];
+    let sum = num.reduce((total,item,index)=>total+item,0)
+    console.log(sum)
+
+    let num01 = [20,60,10,90]
+    let sMax = num01.reduce((total,item) => total > item ? total : item)
+    let sMin = num01.reduce((total,item) => total < item ? total : item)
+    console.log(sMax)
+    console.log(sMin)
+
+
+  </script>
+</body>
+</html>

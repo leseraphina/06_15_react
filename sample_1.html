@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sort()</title>
+</head>
+<body>
+  <script>
+const str = [
+  {name:'자',num:20}
+  ,{name:'가',num:10}
+  ,{name:'다',num:50}
+  ,{name:'마',num:40}
+]
+//  이름으로 정리
+const a = str.sort((a,b) => {
+  return a.name < b.name ? -1 : a.name? 1 : 0 
+})
+const b = str.sort((a,b) => {
+  return a.name < b.name ? 1 : a.name? -1 : 0 
+})
+ console.log(b)
+
+ 
+  </script>
+</body>
+</html>
