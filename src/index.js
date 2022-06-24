@@ -73,6 +73,9 @@ const filterAppointents = appintList.filter(
             <AddInfo 
             key= {appointment.id}
             appointment ={appointment}
+            onDeleteAppoint = {
+              appointmentId => setAppintList(appintList.filter(appointment => appointment.id !==  appointmentId))
+            }
             />
           ))
           } 
